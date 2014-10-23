@@ -1,0 +1,46 @@
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Robot Toy</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <% (@robot.ybounds - 1).downto(0) do |i| %>
+          <div class="field-row">
+            <% for j in 0..(@robot.xbounds - 1) do %>
+            <div id="field-<%= "#{i}-#{j}" %>" class="field" style="width:<%= 99/@robot.xbounds %>%;">
+              <%= link_to robot_place_x_y_path( x: j,y: i ), class: "field-inner" do %>
+                <span><%= "#{j}x#{i}" %></span>
+                <% if @robot.pos_x == j && @robot.pos_y == i %>
+                <div>
+                  <i class="fa fa-caret-square-o-up <%= "fa-rotate-" + (@robot.facing * 90 % 360).to_s %>"></i>
+                </div>
+                <% end %>
+              <% end %>
+            </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-6 col-sm-12 control">
+        <p><%= link_to robot_place_path, class: "btn btn-lg btn-primary" do %>
+          Place 0x0 <i class="fa fa-dot-circle-o"></i>
+        <% end %></p>
+        <p><%= link_to robot_move_path, class: "btn btn-lg btn-primary" do  %>
+          Move <i class="fa fa-arrow-up"></i>
+        <% end %></p>
+        <p><%= link_to robot_left_path, class: "btn btn-lg btn-primary" do  %>
+          Left <i class="fa fa-reply"></i>
+        <% end %></p>
+        <p><%= link_to robot_right_path, class: "btn btn-lg btn-primary" do  %>
+          Right <i class="fa fa-reply fa-flip-horizontal"></i>
+        <% end %></p>
+        <p><%= link_to robot_report_path, class: "btn btn-lg btn-primary" do  %>
+          Report <i class="fa fa-file-text-o"></i>
+        <% end %></p>
+
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, class: ["alert-" + name, "alert"] %>
+        <% end %>
+      </div>
+    </div>

@@ -1,0 +1,42 @@
+// Place all the styles related to the Robot controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.field-row {
+  height: 100px;
+
+  .field {
+    padding: 5px;
+    float: left;
+
+    .field-inner {
+      display: block;
+      position: relative;
+      padding-top: 100%;
+      background-color: #ccc;
+
+      div {
+        position: absolute;
+        top: 15%;
+        width: 100%;
+        font-size: 3em;
+        text-align: center;
+      }
+      span {
+        position: absolute;
+        bottom: 0;
+      }
+
+      .fa {
+        color: black;
+      }
+    }
+  }
+}
+
+.control {
+  .btn {
+    display: inline-block;
+    width: 200px;
+  }
+}
